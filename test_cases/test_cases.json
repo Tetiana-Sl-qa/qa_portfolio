@@ -1,0 +1,32 @@
+{
+    "TestCase_id":"1",
+    "Title":"Products should not be clickable in the Checkout page",
+    "Steps":
+    {
+      "1":"Given user is on the Checkout page",
+      "2":"When user clicks on any product"
+    },
+    "Expected result":"Then nothing should happen"
+}, 
+{
+    "TestCase_id":"2",
+    "Title":"User should be able to complete the Payment by clicking Confirm order button",
+    "Steps":
+    {
+      "1":"Given user is on the Checkout page",
+      "2":"When user provides all required info",
+      "3":"And clicks Confirm order button"
+    },
+    "Expected result":"Then the payment should be completed"
+},
+{
+  "TestCase_id":"3",
+    "Title":"Error message should display for required field if it's empty",
+    "Steps":
+    {
+      "1":"Given user is on the Checkout page",
+      "2":"When user fills out the Payment form",
+      "3": "And lefts one of the required field empty"
+    },
+    "Expected result":"Then the error message should display"
+}

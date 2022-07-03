@@ -1,0 +1,880 @@
+{
+	"info": {
+		"_postman_id": "86e3bca3-1695-4ee9-a05c-3cde426b14ab",
+		"name": "Testrail",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Test cases",
+					"item": [
+						{
+							"name": "Add suite",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "password",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "mail",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"This is a new test suite\",\n\t\"description\": \"Use the description to add additional context details\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/{{api-version}}/add_suite/22",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api-version}}",
+										"add_suite",
+										"22"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add case",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "tD0Z4MBMW7fqxSdI7KDZ",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "mail",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"This is a test case\",\n  \"type_id\": 1,\n  \"priority_id\": 3,\n  \"estimate\": \"3m\",\n  \"custom_expected\": \"Click\",\n  \"custom_steps\": \"Go to the Home page\",\n  \"refs\": \"RF-1, RF-2\",\n  \"custom_steps_separated\": [\n    {\n      \"content\": \"Step 1\",\n      \"expected\": \"Expected Result 1\"\n    },\n    {\n      \"content\": \"Step 2\",\n      \"expected\": \"Expected Result 2\"\n    },\n    {\n      \"shared_step_id\": 3\n     }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/{{api-version}}/add_case/4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api-version}}",
+										"add_case",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add section",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"suite_id\": 5,\n\t\"name\": \"This is a new section\",\n\t\"parent_id\": 10\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/{{api-version}}/add_section/22",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api-version}}",
+										"add_section",
+										"22"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update section",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "my_value",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "my_value",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"A better section name\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/{{api-version}}/update_section/4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api-version}}",
+										"update_section",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get section",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"depth\": 0,\n\t\"description\": null,\n\t\"display_order\": 1,\n\t\"id\": 1,\n\t\"name\": \"Prerequisites\",\n\t\"parent_id\": null,\n\t\"suite_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/{{api-version}}/get_section/4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api-version}}",
+										"get_section",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add case field",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"type\": \"Multiselect\",\n        \"name\": \"my_multiselect\",\n        \"label\": \"My Multiselect\",\n        \"description\": \"my custom Multiselect description\",\n        \"configs\": [\n            {\n                \"context\": {\n                    \"is_global\": true,\n                    \"project_ids\": \"\"\n                },\n                \"options\": {\n                    \"is_required\": false,\n                    \"items\": \"1, One\\n2, Two\"\n                }\n            }\n        ],\n        \"include_all\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/{{api-version}}/add_case_field",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api-version}}",
+										"add_case_field"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update case",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Get case types",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Add result",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"status_id\": 5,\n\t\"comment\": \"This test failed\",\n\t\"elapsed\": \"15s\",\n\t\"defects\": \"TR-7\",\n\t\"version\": \"1.0 RC1 build 3724\",\n\n\t..\n\n\t\"custom_step_results\": [\n\t\t{\n\t\t\t\"content\": \"Step 1\",\n\t\t\t\"expected\": \"Expected Result 1\",\n\t\t\t\"actual\": \"Actual Result 1\",\n\t\t\t\"status_id\": 1\n\t\t},\n\t\t{\n\t\t\t\"content\": \"Step 2\",\n\t\t\t\"expected\": \"Expected Result 2\",\n\t\t\t\"actual\": \"Actual Result 2\",\n\t\t\t\"status_id\": 2\n\t\t}\n\t]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/{{api-version}}/add_result/{test_id}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api-version}}",
+										"add_result",
+										"{test_id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get templates",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"console.log(pm.response.json().id);",
+											"",
+											"let projectID = pm.response.json().id;",
+											"",
+											"pm.globals.set(\"projID\", \"projectID\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/{{api-version}}/get_projects&is_completed=0",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api-version}}",
+										"get_projects&is_completed=0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const body = pm.response.json();",
+											"",
+											"pm.environment.set(\"project_id\", body.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"ABCD\",\n\t\"announcement\": \"This is the description for the project\",\n\t\"show_announcement\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/{{api-version}}/add_project",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api-version}}",
+										"add_project"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Post",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const body = pm.response.json();",
+											"pm.globals.set(\"projectName\", body.name);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"1\",\n\t\"announcement\": \"This is the description for the project\",\n\t\"show_announcement\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/{{api-version}}/add_project",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api-version}}",
+										"add_project"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Add project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = JSON.parse(responseBody);",
+									"",
+									"pm.environment.set('project_id', response.id);",
+									"pm.environment.set('project_name', response.name);",
+									"",
+									"const body = pm.response.json();",
+									"",
+									"pm.test (\"Check response propeties\",function()  {",
+									"    pm.expect(body).to.have.property(\"id\");",
+									"    pm.expect(body).to.have.property(\"name\"); ",
+									"    pm.expect(body).to.have.property(\"announcement\");",
+									"    pm.expect(body).to.have.property(\"show_announcement\");",
+									"    pm.expect(body).to.have.property(\"is_competed\");",
+									"});",
+									"",
+									"pm.test (\"Status code is 200\",function()    {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test (\"show_announcement is true\", function () {",
+									"    pm.expect (body.show_announcement).to.be.true;",
+									"});",
+									"",
+									"pm.test(\"Check name value\", function () {",
+									"    pm.expect (body.name).to.eql (\"This is a new project\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "tD0Z4MBMW7fqxSdI7KDZ",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "tetianasliusarenkodivovujna@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"This is a new project_2\",\n\t\"announcement\": \"This is the description for the project\",\n\t\"show_announcement\": true\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/{{api-version}}/add_project",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{api-version}}",
+								"add_project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add project Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = JSON.parse(responseBody);",
+									"",
+									"pm.environment.set('project_id', response.id);",
+									"pm.environment.set('project_name', response.name);",
+									"",
+									"const body = pm.response.json();",
+									"",
+									"pm.test (\"Check response propeties\",function()  {",
+									"    pm.expect(body).to.have.property(\"id\");",
+									"    pm.expect(body).to.have.property(\"name\"); ",
+									"    pm.expect(body).to.have.property(\"announcement\");",
+									"    pm.expect(body).to.have.property(\"show_announcement\");",
+									"    pm.expect(body).to.have.property(\"is_competed\");",
+									"});",
+									"",
+									"pm.test (\"Status code is 200\",function()    {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test (\"show_announcement is true\", function () {",
+									"    pm.expect (body.show_announcement).to.be.true;",
+									"});",
+									"",
+									"pm.test(\"Check name value\", function () {",
+									"    pm.expect (body.name).to.eql (\"This is a new project\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "mail",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"My project\",\n\t\"announcement\": \"This is the description for the project\",\n\t\"show_announcement\": true\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/{{api-version}}/add_project",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{api-version}}",
+								"add_project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Negative add project test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test (\"Status code is 400\",function()    {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"const response = JSON.parse(responseBody);",
+									"",
+									"let body = pm.response.json;",
+									"pm.test (\"Check response propeties\", function() {",
+									"    pm.expect(body).to.have.property(\"error\");",
+									"});   ",
+									"",
+									"pm.test (\"Check error value\", function() {",
+									"    pm.expect(body.error).to.eql(\"Field :name is too long (250 characters at most).\");",
+									"});  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "mail",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"crCqU7%P.EbC!D#pTJZg(}D/J5bYUaif7UuVj%dt&7tnk+j!UcU5@:7K%8@_A5(WCFww+YS5wcRevyfCR&(X[JMY]6eZ{(Fa*r_7W_$b*%-bhRtTY_Xuw}ACSr5Rkv_QF$rE_p:q7NSGdBx,K#YSZ+.]TeeAE!up[hwj2bW$/;QrNL8HYyAUE%.q.Fu&GQ!nw7Ha22Php@J{_)H&(eMr:z$KEw}/AM)_Fqk9Dj:)?B.YeiYx[@BWUnt+KT566\",\n\t\"announcement\": \"This is the description for the project\",\n\t\"show_announcement\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/{{api-version}}/add_project",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{api-version}}",
+								"add_project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test (\"Status code is 200\", function (){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n     \"name\": \"test\",\n\t\"announcement\": \"Happy Holidays Everyone!\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/{{api-version}}/update_project/22",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{api-version}}",
+								"update_project",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get projects",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/{{api-version}}/get_projects",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{api-version}}",
+								"get_projects"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "username",
+						"value": "tetianasliusarenkodivovujna@gmail.com",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "tD0Z4MBMW7fqxSdI7KDZ",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{api-version}}/get_users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{api-version}}",
+								"get_users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "mail",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"New\",\n    \"email\": \"test1@localhost.com\"\n}   \n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/{{api-version}}/add_user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{api-version}}",
+								"add_user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "variable_key",
+			"value": ""
+		}
+	]
+}

@@ -1,0 +1,38 @@
+{
+    "Bug_id":"1",
+    "Priority":"Hight",
+    "Summary":"[Hero product] Page Not found error appears after user clicks Shop Now button",
+    "Steps to reproduce":
+    {
+      "1":"Go to the Home page",
+      "2":"Click on the Shop now button for Hero product"
+    },
+    "Expected result":"The Product details page should open",
+    "Actual result":"Page not found and error message appears"
+  },
+  {
+    "Bug_id":"2",
+    "Priority":"Low",
+    "Summary":"[Checkout Page] The error message for incomplete Payment form is black when it should be red",
+    "Steps to reproduce":
+    {
+      "1":"Add any product to the Cart",
+      "2":"Go to Checkout page",
+      "3":"Click Confirm order button",
+    },
+    "Expected result":"The Error message should appear on the page and text should be red",
+    "Actual result":"The text of the error message is black (not red as expected)"
+  },
+  {
+    "Bug_id":"3",
+    "Priority":"Hight",
+    "Summary":"[Cart Page] The full price displays as a Total price for the products from On Sale category",
+    "Steps to reproduce":
+    {
+      "1":"Add any product from Sale to the Cart",
+      "2":"Go to the Cart page",
+      "3":"Review the Total price"
+    },
+    "Expected result":"The Total price should be discounted price",
+    "Actual result":"The Total price displays as a full price"
+  }

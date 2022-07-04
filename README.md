@@ -1,4 +1,4 @@
-Hello, welcome to my repository! This repository contains the following information:
+Hello! Welcome to my repository! This repository contains the following information:
 - test cases;
 - bug reports;
 - examples of the Postman requests;

@@ -1,0 +1,1 @@
+SELECT * FROM students WHERE idstudents % 2!= 0;

@@ -1,6 +1,6 @@
 {
     "Bug_id":"1",
-    "Priority":"Hight",
+    "Severity":"Hight",
     "Summary":"[Hero product] Page Not found error appears after user clicks Shop Now button",
     "Steps to reproduce":
     {
@@ -12,7 +12,7 @@
   },
   {
     "Bug_id":"2",
-    "Priority":"Low",
+    "Severity":"Low",
     "Summary":"[Checkout Page] The error message for incomplete Payment form is black when it should be red",
     "Steps to reproduce":
     {
@@ -25,7 +25,7 @@
   },
   {
     "Bug_id":"3",
-    "Priority":"Hight",
+    "Severity":"Hight",
     "Summary":"[Cart Page] The full price displays as a Total price for the products from On Sale category",
     "Steps to reproduce":
     {

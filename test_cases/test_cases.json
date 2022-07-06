@@ -1,6 +1,5 @@
 {
     "TestCase_id":"1",
-    "Priority":"",
     "Title":"Products should not be clickable in the Checkout page",
     "Steps":
     {
@@ -11,7 +10,6 @@
 }, 
 {
     "TestCase_id":"2",
-    "Priority":"",
     "Title":"User should be able to complete the Payment by clicking Confirm order button",
     "Steps":
     {
@@ -23,7 +21,6 @@
 },
 {
   "TestCase_id":"3",
-  "Priority":"",
     "Title":"Error message should display for required field if it's empty",
     "Steps":
     {
@@ -34,5 +31,3 @@
     "Expected result":"Then the error message should display"
 }
 
-
-//Product Managers or Owners can adjust Priority 
